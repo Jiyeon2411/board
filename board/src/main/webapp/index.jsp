@@ -34,7 +34,7 @@
        <c:forEach var="board" items="${boardList}" varStatus="status">
           <tr>
             <td>${board.board_no}</td>
-            <td class="title">${board.title}</td>
+            <td class="title"><a href="view?board_no=${board.board_no}">${board.title}</a></td>
             <td>${board.user_id}</td>
             <td>${board.reg_date}</td>
             <td>${board.views}</td>
