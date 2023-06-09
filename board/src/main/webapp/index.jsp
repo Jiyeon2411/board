@@ -14,7 +14,6 @@
 	<!-- 페이지이동을 하지만 주소는 바뀌지 않는다. -->
 		<jsp:forward page="list" />
 	</c:if>
-	
 	<div class="wrap">
       <table class="board_list">
         <caption>
@@ -57,5 +56,13 @@
         <a href="#" class="bt last">&gt;&gt;</a>
       </div>
     </div>
+    <script>
+    	<c:if test = "${param.error != null}">
+    		alert("${param.error}");
+    	</c:if>
+    	<c:if test = "${error != null}">
+		alert("${error}");
+		</c:if>
+    </script>
 </body>
 </html>

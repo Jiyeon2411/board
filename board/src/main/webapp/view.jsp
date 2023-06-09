@@ -48,6 +48,14 @@
         </div>
       </div>
     </div>
+    <script>
+    	<c:if test = "${param.error != null}">
+    		alert("${param.error}");
+    	</c:if>
+    	<c:if test = "${error != null}">
+		alert("${error}");
+		</c:if>
+    </script>
     <script type="text/javascript" src="./script.js"></script>
 </body>
 </html>

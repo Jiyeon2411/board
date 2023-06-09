@@ -23,13 +23,13 @@ public class BoardDAO {
 	}
 	
 	//게시판 리스트 가져오기
-	public ArrayList<Board> getList() throws SQLException {
+	public ArrayList<Board> getList() throws Exception {
 		Connection conn = open();
 		
 		//Board객체를 저장할 ArrayList
 		ArrayList<Board> boardList = new ArrayList<>();
 		
-		String sql = "SELECT BOARD_NO, TITLE, USER_ID, TO_CHAR (REG_DATE, 'YYYY.MM.DD') REG_DATE, VIEWS FROM BOARD";
+		String sql = "SELECT BOARD_NO, TITLE, USER_ID, TO_CHAR (REG_DATE, 'YYYY.MM.DD') REG_DATE2, VIEWS FROM BOARD";
 		PreparedStatement pstmt = conn.prepareStatement(sql); //쿼리문등록
 		ResultSet rs = pstmt.executeQuery(); //쿼리문 실행
 		
@@ -51,7 +51,7 @@ public class BoardDAO {
 	}
 	
 	//게시물 내용 가져오기
-	public Board getView(int board_no) throws SQLException {
+	public Board getView(int board_no) throws Exception {
 		Connection conn = open();
 		Board b = new Board();
 		
@@ -77,7 +77,7 @@ public class BoardDAO {
 	 }
 	
 	//조회수 증가
-	public void updateViews(int board_no) throws SQLException {
+	public void updateViews(int board_no) throws Exception {
 		Connection conn = open();
 		String sql = "UPDATE BOARD SET VIEWS = (VIEWS + 1) WHERE BOARD_NO = ?";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -89,7 +89,7 @@ public class BoardDAO {
 	 }
 	
 	//게시글 등록
-	public void insertBoard(Board b) throws SQLException {
+	public void insertBoard(Board b) throws Exception {
 		Connection conn = open();
 		String sql = "INSERT INTO BOARD(BOARD_NO, USER_ID, TITLE, CONTENT, REG_DATE, VIEWS, IMG)" 
 				+ " VALUES (BOARD_SEQ.NEXTVAL, ?, ?, ?, SYSDATE, 0, ?)";
@@ -105,7 +105,7 @@ public class BoardDAO {
 	 }
 	
 	//게시글 수정화면 보여주기
-	public Board getViewForEdit(int board_no) throws SQLException {
+	public Board getViewForEdit(int board_no) throws Exception {
 		Connection conn = open();
 		Board b = new Board();
 		String sql = "SELECT BOARD_NO, TITLE, USER_ID, TO_CHAR (REG_DATE, 'YYYY.MM.DD') REG_DATE, VIEWS, CONTENT, IMG FROM BOARD WHERE BOARD_NO = ?";
